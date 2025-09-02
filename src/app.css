@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-solo-dark: #0a0e27;
+  --color-solo-medium: #1a1f3a;
+  --color-solo-light: #2a3f5f;
+  --color-solo-cyan: #00d4ff;
+  --color-solo-blue: #0099ff;
+  --color-solo-gold: #ffa500;
+  
+  --font-family-game: 'Orbitron', monospace;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-solo-dark);
+}

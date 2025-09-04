@@ -1,20 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@font-face {
+  font-family: 'Solo Leveling';
+  src: url('/fonts/Eternal.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-solo-dark: #0a0e27;
-  --color-solo-medium: #1a1f3a;
-  --color-solo-light: #2a3f5f;
+  --font-family-heading: 'Solo Leveling', 'Bebas Neue', sans-serif;
+  --font-family-body: 'Inter', 'Noto Sans', system-ui, sans-serif;
+  --font-family-game: 'Orbitron', monospace;
+  
+
+
+  --color-solo-dark: #0a0818;
+  --color-solo-medium: #1a1230;
+  --color-solo-light: #2a1f4a;
+  --color-solo-purple: #9333ea;
+  --color-solo-purple-light: #a855f7;
   --color-solo-cyan: #00d4ff;
   --color-solo-blue: #0099ff;
   --color-solo-gold: #ffa500;
   
-  --font-family-game: 'Orbitron', monospace;
 }
 
 /* Global styles */
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-solo-dark);
+  font-family: var(--font-family-body);
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 8, 24, 0.7);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }

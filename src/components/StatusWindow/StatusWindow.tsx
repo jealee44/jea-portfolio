@@ -38,13 +38,13 @@ const StatusWindow = () => {
         <div className="bg-gradient-to-br from-[rgba(10,8,24,0.95)] to-[rgba(26,18,48,0.95)] border-2 border-solid border-[rgba(163,230,255,0.5)] shadow-[0_0_30px_rgba(147,51,234,0.4),inset_0_0_30px_rgba(147,51,234,0.1)] backdrop-blur-[10px] rounded-none px-8 py-2">
             {/* Status Window */}
             <div className="flex justify-center">
-            <div className="border border-[rgba(163, 230, 255, .3)] bg-[rgba(10, 8, 24, .5)] px-8 py-2 mb-6 inline-block">
-                <span className="text-xs uppercase tracking-wider text-[var(--color-solo-purple)] font-['Orbitron']">
-                STATUS
+            <div className="border border-[rgba(163,230,255,0.3)] bg-[rgba(10,8,24,0.5)] px-8 py-2 mb-6 inline-block">
+                <span className="text-xs uppercase tracking-wider text-[var(--color-solo-purple)] font-family-heading">
+                About Me
                 </span>
             </div>
         </div>
-        <p>{stats.name}</p>
+        <h1 className="text-4xl font-family-body text-white text-center my-4 text-shadow-lg text-shadow-purple-500/50">{stats.name}</h1>
         <p>Level: {stats.level}</p>
         <p>Class: {stats.class}</p>
         <p>Energy: {stats.energy.current}/{stats.energy.max}</p>

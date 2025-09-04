@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap');
+@import "tailwindcss";
+
+
 @font-face {
   font-family: 'Solo Leveling';
   src: url('/fonts/Eternal.ttf') format('truetype');
@@ -6,9 +10,6 @@
   font-display: swap;
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap');
-@import "tailwindcss";
 
 @theme {
   --font-family-heading: 'Solo Leveling', 'Bebas Neue', sans-serif;

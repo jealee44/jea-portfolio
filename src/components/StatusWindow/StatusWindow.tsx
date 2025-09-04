@@ -1,4 +1,4 @@
-import {motion} from 'motion/react'
+import {motion, type Variants} from 'motion/react'
 
 const StatusWindow = () => {
     const stats = {
@@ -9,7 +9,7 @@ const StatusWindow = () => {
         focus: { current: 99, max: 100}
     }
 
-    const containerVariants = { 
+    const variants: Variants = { 
         hidden: {
             opacity: 0,
             scale: 0.8,
@@ -29,11 +29,19 @@ const StatusWindow = () => {
     }
 
     return (
-        <div className="bg-gradient-to-br from-[rgba(10,8,24,0.95)] to-[rgba(26,18,48,0.95)] border-2 border-solid border-[rgba(163,230,255,0.5)] shadow-[0_0_30px_rgba(147,51,234,0.4),inset_0_0_30px_rgba(147,51,234,0.1)] backdrop-blur-[10px] rounded-none p-8">
+        <motion.div 
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-xl mx-auto mt-20"
+        >
+        <div className="bg-gradient-to-br from-[rgba(10,8,24,0.95)] to-[rgba(26,18,48,0.95)] border-2 border-solid border-[rgba(163,230,255,0.5)] shadow-[0_0_30px_rgba(147,51,234,0.4),inset_0_0_30px_rgba(147,51,234,0.1)] backdrop-blur-[10px] rounded-none px-8 py-2">
             {/* Status Window */}
             <div className="flex justify-center">
-            <div className="border-1 border-solid border-[rgba(163, 230, 255, .3)] bg-[rgba(10, 8, 24, .5)] px-2 py-8 mb-6 inline-block">
+            <div className="border border-[rgba(163, 230, 255, .3)] bg-[rgba(10, 8, 24, .5)] px-8 py-2 mb-6 inline-block">
+                <span className="text-xs uppercase tracking-wider text-[var(--color-solo-purple)] font-['Orbitron']">
                 STATUS
+                </span>
             </div>
         </div>
         <p>{stats.name}</p>
@@ -42,6 +50,7 @@ const StatusWindow = () => {
         <p>Energy: {stats.energy.current}/{stats.energy.max}</p>
         <p>Focus: {stats.focus.current}/{stats.focus.max}</p>
         </div>
+        </motion.div>
     )
 }
 

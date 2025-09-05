@@ -28,8 +28,8 @@
   --color-solo-gold: #ffa500;
   --color-cyan-light: #a3e6ff;
 
-  --gradient-panel: linear-gradient(135deg, var(--color-solo-dark), var(--color-solo-medium));
-  --shadow-cyan: 0 0 30px rgba(163,230,255,.40), inset 0 0 30px rgba(163,230,255,.10);
+  --panel-gradient: linear-gradient(135deg, var(--color-solo-dark), var(--color-solo-medium));
+  --panel-shadow: 0 0 30px rgba(163,230,255,.40), inset 0 0 30px rgba(163,230,255,.10);
   
 }
 

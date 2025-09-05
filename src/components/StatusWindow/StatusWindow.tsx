@@ -35,18 +35,19 @@ const StatusWindow = () => {
         animate="visible"
         className="max-w-xl mx-auto mt-20"
         >
-        <div className="bg-[--gradient-panel] border-2 border-cyan-light/50 shadow-[--shadow-cyan] backdrop-blur-[10px] rounded-none px-8 py-2">
-            {/* Status Window */}
+        <div className="[background:var(--panel-gradient)] [box-shadow:var(--panel-shadow)] border-2 border-cyan-light/50 backdrop-blur-md rounded-none px-8 py-4">
             <div className="flex justify-center">
-            <div className="border border-[rgba(163,230,255,0.3)] bg-[rgba(10,8,24,0.5)] px-8 py-2 mb-6 inline-block">
-                <span className="text-xs uppercase tracking-wider text-[var(--color-solo-purple)] font-family-heading">
+            <div className="border border-cyan-light/30 bg-solo-dark/50 px-8 py-2 mb-6 inline-block">
+                <span className="text-4xl uppercase tracking-wider text-cyan-light font-family-heading [text-shadow:0_0_10px_var(--color-cyan-light)]">
                 About Me
                 </span>
             </div>
         </div>
-        <h1 className="text-4xl font-family-body text-white text-center my-4 text-shadow-lg text-shadow-purple-500/50">{stats.name}</h1>
-        <p>Level: {stats.level}</p>
-        <p>Class: {stats.class}</p>
+        <h1 className="text-3xl font-family-body text-white text-center my-4 text-shadow-lg text-shadow-purple-500/50">{stats.name}</h1>
+        <div className="mb-6 flex justify-evenly text-2x1 text-cyan-light font-family-game">
+            <span>LEVEL {stats.level}</span>
+            <span>TITLE: {stats.class}</span>
+        </div>
         <p>Energy: {stats.energy.current}/{stats.energy.max}</p>
         <p>Focus: {stats.focus.current}/{stats.focus.max}</p>
         </div>

@@ -18,17 +18,19 @@
   
 
 
-  --color-solo-dark: #0a0818;
-  --color-solo-medium: #1a1230;
-  --color-solo-light: #2a1f4a;
-  --color-solo-purple: #9333ea;
-  --color-solo-purple-light: #a855f7;
-  --color-solo-cyan: #00d4ff;
-  --color-solo-blue: #0099ff;
-  --color-solo-gold: #ffa500;
+  --color-dark: #0a0818;
+  --color-medium: #1a1230;
+  --color-light: #2a1f4a;
+  --color-purple: #9333ea;
+  --color-purple-light: #a855f7;
+  --color-cyan: #00d4ff;
+  --color-blue: #0099ff;
+  --color-gold: #ffa500;
+  --color-gold-light: #ffcc00;
   --color-cyan-light: #a3e6ff;
 
-  --panel-gradient: linear-gradient(135deg, var(--color-solo-dark), var(--color-solo-medium));
+
+  --panel-gradient: linear-gradient(135deg, var(--color-dark), var(--color-medium));
   --panel-shadow: 0 0 30px rgba(163,230,255,.40), inset 0 0 30px rgba(163,230,255,.10);
   
 }

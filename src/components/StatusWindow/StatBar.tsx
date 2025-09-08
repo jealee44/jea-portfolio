@@ -4,7 +4,7 @@ interface StatBarProps {
     label: string;
     current: number;
     max: number;
-    color?: string;
+    color?: "cyan-light"| "gold-light";
     delay?: number;
 }
 
@@ -16,6 +16,13 @@ export default function StatBar({
     delay = 0.5,
 }: StatBarProps) {
     const percentage = Math.min(100, (current / max ) * 100);
+
+    const colorMap = {
+        "cyan-light": "var(--color-cyan-light)",
+        "gold-light": "var(--color-gold-light)",
+    } as const;
+
+    const tint = colorMap[color];
 
     return (
         <div className="space-y-1" aria-label={`${label}: ${current}/${max}`}>
@@ -33,10 +40,10 @@ export default function StatBar({
                     initial={{ width: 0 }}
                     animate={{ width: `${percentage}%` }}
                     transition={{ duration: 0.9, ease: "easeOut", delay }}
-                    className="h-full relative"
+                    className="h-full"
                     style={{
-                        background: `linear-gradient(90deg, var(--color-${color}), var(--color-${color}))`,
-                        boxShadow: `0 0 12px var(--color-${color})`,
+                        backgroundColor: tint,
+                        boxShadow: `0 0 12px ${tint}`,
                     }}
                 >
                 </motion.div>

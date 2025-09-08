@@ -6,9 +6,11 @@ const StatusWindow = () => {
     name: string;
     level: number;
     class: string;
-}
+    energy: {current: number; max: number};
+    focus: {current: number; max: number};
+};
 
-    const stats = {
+    const stats: Stats = {
         name: "Jea Lee",
         level: 2,
         class: "Full-Stack Developer",
@@ -80,6 +82,8 @@ const StatusWindow = () => {
         </div>
         </div>
         </motion.div>
+
+        
     )
 }
 

@@ -1,4 +1,5 @@
 import {motion, type Variants} from 'motion/react'
+import StatBar from './StatBar'
 
 const StatusWindow = () => {
     type Stats = {
@@ -61,8 +62,22 @@ const StatusWindow = () => {
                 <span className="[text-shadow:0_0_10px_var(--color-cyan-light)]">{stats.class}</span></div>
         </div>
         </div>
-        <p>Energy: {stats.energy.current}/{stats.energy.max}</p>
-        <p>Focus: {stats.focus.current}/{stats.focus.max}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <StatBar
+                label="Energy"
+                current={stats.energy.current}
+                max={stats.energy.max}
+                color="gold-light"
+                delay={0.1}
+            />
+            <StatBar
+                label="Focus"
+                current={stats.focus.current}
+                max={stats.focus.max}
+                color="cyan-light"
+                delay={0.2}
+            />
+        </div>
         </div>
         </motion.div>
     )

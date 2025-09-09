@@ -39,12 +39,35 @@
   
 }
 
+@keyframes aura {
+  0% {
+    filter:
+      drop-shadow(0 0 10px var(--color-cyan))
+      drop-shadow(0 0 18px var(--color-purple));
+    transform: translateY(0);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 16px var(--color-cyan-light))
+      drop-shadow(0 0 28px var(--color-purple-light))
+      drop-shadow(0 0 6px var(--color-gold-light));
+    transform: translateY(-2px);
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 10px var(--color-cyan))
+      drop-shadow(0 0 18px var(--color-purple));
+    transform: translateY(0);
+  }
+}
+
+
 /* Global styles */
 body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-family-body);
-  background-image: url('/background.jpg');
+  background-image: url('/images/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

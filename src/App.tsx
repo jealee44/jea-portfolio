@@ -1,14 +1,19 @@
-import StatusWindow from './components/StatusWindow/StatusWindow'
+import StatusWindow from './components/StatusWindow/StatusWindow';
+import Avatar from './components/StatusWindow/Avatar';
 
 
-function App() {
-  return (
-    <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-8">
-        <StatusWindow />
+export default function App() {
+ return (
+    <main className="relative z-10 mx-auto max-w-[1200px] px-4 py-12">
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_420px]">
+        <div>
+          <StatusWindow />
+        </div>
+        <div className="justify-self-center">
+          <Avatar className="w-[260px] sm:w-[320px] lg:w-[420px]" />
+        </div>
       </div>
-    </div>
-  )
+    </main>
+  );
 }
 
-export default App

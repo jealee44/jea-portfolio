@@ -84,7 +84,7 @@ const StatusWindow = () => {
         </div>
         <section aria-labelledby='about-desc' className="mt-4 border-t border-cyan-light/40 pt-4 ">
             <h2 id="about-desc" className="sr-only">About Description</h2>
-            <p className="font-family-body text-cyan-light/70 leading-relaxed text-(length:--fs-body) max-w-fit">
+            <p className="font-family-body text-cyan-light/70 leading-normal text-(length:--fs-body) max-w-fit">
         Welcome, Adventurer! Allow me to introduce <strong className="text-green [text-shadow:0_0_12px_var(--color-green)]">Jea Lee</strong>
 , a level 2 (y.o.e) <strong className="text-cyan-light"> Full-stack Developer</strong> who specializes in  <strong className="text-gold-light/90"> React</strong>, <strong className="text-gold-light/90">TypeScript</strong>,
   <strong className="text-gold-light/90"> Node.js</strong>, <strong className="text-gold-light/90">PostgreSQL</strong>, and

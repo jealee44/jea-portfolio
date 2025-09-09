@@ -28,10 +28,14 @@
   --color-gold: #f6c453;
   --color-gold-light: #ffe08a;
   --color-cyan-light: #a3e6ff;
+  --color-green: #39FF88;
+  --color-green-light: #B9FF73;
 
 
   --panel-gradient: linear-gradient(135deg, var(--color-dark), var(--color-medium));
   --panel-shadow: 0 0 30px rgba(163,230,255,.40), inset 0 0 30px rgba(163,230,255,.10);
+
+  --fs-body: clamp(0.95rem, 0.9rem + 0.35vw, 1.15rem);
   
 }
 

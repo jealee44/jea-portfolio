@@ -16,8 +16,6 @@
   --font-family-body: 'Inter', 'Noto Sans', system-ui, sans-serif;
   --font-family-game: 'Orbitron', monospace;
   
-
-
   --color-dark: #0a0818;
   --color-medium: #1a1230;
   --color-light: #2a1f4a;
@@ -31,12 +29,11 @@
   --color-green: #39FF88;
   --color-green-light: #B9FF73;
 
-
   --panel-gradient: linear-gradient(135deg, var(--color-dark), var(--color-medium));
   --panel-shadow: 0 0 30px rgba(163,230,255,.40), inset 0 0 30px rgba(163,230,255,.10);
 
   --fs-body: clamp(0.95rem, 0.9rem + 0.35vw, 1.15rem);
-  
+
 }
 
 @keyframes aura {
@@ -81,6 +78,10 @@ body::before {
   background: rgba(10,8,24,0.7);
   pointer-events: none;
   z-index: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 #root {

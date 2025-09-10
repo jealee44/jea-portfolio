@@ -20,7 +20,7 @@ It showcases my projects, skills, and background in a unique game-inspired forma
 
 ## 🎯 Roadmap
 - [x] Initial setup with Vite + Tailwind v4
-- [ ] Status Window component
+- [x] Status Window component
 - [ ] Quest Log with project modals
 - [ ] Skill Tree visualization
 - [ ] Equipment section

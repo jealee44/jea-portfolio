@@ -21,22 +21,19 @@ export default function NavBar() {
     const [open, setOpen] = useState(false);
 
     return (
-        <header className="bg-dark/40 backdrop-blur-md text-cyan-light font-family-heading border-b ">
-            <nav className="px-4 flex justify-between mx-auto max-w-screen h-18 items-center ">
-                <a href="#about">JEA LEE</a>
+        <header className="fixed top-0 left-0 right-0 z-40 bg-dark/40 backdrop-blur-md border-b border-cyan-light/50">
+            <nav className="container-90 h-18 flex justify-between items-center">
+                <a href="#about" className="font-family-heading text-cyan-light">JEA LEE</a>
 
-                <ul className="hidden md:flex gap-6 items-center">
+                <ul className="hidden md:flex gap-6 items-center font-family-heading text-cyan-light/80">
                     <li><a href="#about">About</a></li>
-                    <li><a href="projects">Projects</a></li>
-                    <li><a href="skills">Skills</a></li>
-                    <li><a href="resume">Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    icons
+                    icons
+                    icons
                 </ul>
-
-                <div>
-                    icons
-                    icons
-                    icons
-                </div>
             </nav>
         </header>
     );

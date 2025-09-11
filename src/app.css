@@ -36,6 +36,14 @@
 
 }
 
+@utility container-90 {
+  width: 90vw;
+  max-width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 2vw, 2rem);
+}
+
 @keyframes aura {
   0% {
     filter:

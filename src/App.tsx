@@ -18,7 +18,7 @@ export default function App() {
         </div>
       </div>
       <div className="bg-(--color-dark) h-screen text-white" >
-        Projects
+        Projects Placeholder
       </div>
     </main>
   );

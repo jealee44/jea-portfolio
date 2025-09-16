@@ -8,7 +8,6 @@ const StatusWindow = () => {
     class: string;
     energy: {current: number; max: number};
     focus: {current: number; max: number};
-    summary: string;
 };
 
     const stats: Stats = {
@@ -17,7 +16,6 @@ const StatusWindow = () => {
         class: "Full-Stack Developer",
         energy: { current: 85, max: 100 },
         focus: { current: 99, max: 100},
-        summary: "Welcome, Adventurer! Allow me to introduce Jea Lee, a level 2 (y.o.e) Full-stack Developer who specializes in React, TypeScript, Node.js, PostgreSQL, and AWS. He enjoys tackling quests that remove friction in people's lives. Recent achievement: built a database schema migration engine at Ditto. If he's not tackling any quests (or deep in manhwa/anime), you might spot him training **Perception** on the fairway scouting for his lost golf balls or **STR** at the local gym"
     }
 
     const variants: Variants = { 
@@ -44,7 +42,7 @@ const StatusWindow = () => {
         variants={variants}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-xl lg:max-w-3xl xl:max-w-4xl mx-auto mt-20 px-4"
+        className="w-full"
         >
         <div className="[background:var(--panel-gradient)] [box-shadow:var(--panel-shadow)] border-2 border-cyan-light/50 backdrop-blur-md rounded-none px-8 py-4">
             <div className="flex justify-center">

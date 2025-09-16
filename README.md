@@ -3,6 +3,7 @@
 _A Solo Leveling–inspired developer portfolio built with React, TypeScript, Tailwind v4, and Motion._
 
 ## 🚀 Overview
+
 This is my personal portfolio website, styled like an RPG status window.  
 It showcases my projects, skills, and background in a unique game-inspired format.
 
@@ -12,13 +13,15 @@ It showcases my projects, skills, and background in a unique game-inspired forma
 - **Equipment** – Tools & setup represented as items
 
 ## 🛠 Tech Stack
-- **Framework:** React + Vite + TypeScript  
-- **Styling:** Tailwind CSS v4  
-- **Animations:** Motion (`motion/react`)  
-- **Icons:** Lucide React  
-- **Utilities:** clsx  
+
+- **Framework:** React + Vite + TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animations:** Motion (`motion/react`)
+- **Icons:** Lucide React
+- **Utilities:** clsx
 
 ## 🎯 Roadmap
+
 - [x] Initial setup with Vite + Tailwind v4
 - [x] Status Window component
 - [ ] Quest Log with project modals
@@ -27,9 +30,11 @@ It showcases my projects, skills, and background in a unique game-inspired forma
 - [ ] Deploy on Vercel
 
 ## 📸 Preview
+
 _(Coming soon: screenshots of components and deployed site)_
 
 ## 📬 Contact
-- [Portfolio Site](https://your-deployed-link.com)  
-- [GitHub](https://github.com/jealee44)  
+
+- [Portfolio Site](https://your-deployed-link.com)
+- [GitHub](https://github.com/jealee44)
 - [LinkedIn](https://linkedin.com/in/jealee44)

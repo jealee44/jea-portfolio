@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap');
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @font-face {
   font-family: 'Solo Leveling';
@@ -10,12 +9,11 @@
   font-display: swap;
 }
 
-
 @theme {
   --font-family-heading: 'Solo Leveling', 'Bebas Neue', sans-serif;
   --font-family-body: 'Inter', 'Noto Sans', system-ui, sans-serif;
   --font-family-game: 'Orbitron', monospace;
-  
+
   --color-dark: #0a0818;
   --color-medium: #1a1230;
   --color-light: #2a1f4a;
@@ -26,14 +24,13 @@
   --color-gold: #f6c453;
   --color-gold-light: #ffe08a;
   --color-cyan-light: #a3e6ff;
-  --color-green: #39FF88;
-  --color-green-light: #B9FF73;
+  --color-green: #39ff88;
+  --color-green-light: #b9ff73;
 
   --panel-gradient: linear-gradient(135deg, var(--color-dark), var(--color-medium));
-  --panel-shadow: 0 0 30px rgba(163,230,255,.40), inset 0 0 30px rgba(163,230,255,.10);
+  --panel-shadow: 0 0 30px rgba(163, 230, 255, 0.4), inset 0 0 30px rgba(163, 230, 255, 0.1);
 
   --fs-body: clamp(0.95rem, 0.9rem + 0.35vw, 1.15rem);
-
 }
 
 @utility container-90 {
@@ -44,28 +41,34 @@
   padding-inline: clamp(1rem, 2vw, 2rem);
 }
 
-@keyframes aura {
-  0% {
-    filter:
-      drop-shadow(0 0 10px var(--color-cyan))
-      drop-shadow(0 0 18px var(--color-purple));
-    transform: translateY(0);
-  }
-  50% {
-    filter:
-      drop-shadow(0 0 16px var(--color-cyan-light))
-      drop-shadow(0 0 28px var(--color-purple-light))
-      drop-shadow(0 0 6px var(--color-gold-light));
-    transform: translateY(-2px);
-  }
-  100% {
-    filter:
-      drop-shadow(0 0 10px var(--color-cyan))
-      drop-shadow(0 0 18px var(--color-purple));
-    transform: translateY(0);
+@utility container-quest {
+  width: 90vw;
+  max-width: 1600px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 2vw, 2rem);
+}
+@media (min-width: 1024px) {
+  .container-quest {
+    width: 70vw;
   }
 }
 
+@keyframes aura {
+  0% {
+    filter: drop-shadow(0 0 10px var(--color-cyan)) drop-shadow(0 0 18px var(--color-purple));
+    transform: translateY(0);
+  }
+  50% {
+    filter: drop-shadow(0 0 16px var(--color-cyan-light))
+      drop-shadow(0 0 28px var(--color-purple-light)) drop-shadow(0 0 6px var(--color-gold-light));
+    transform: translateY(-2px);
+  }
+  100% {
+    filter: drop-shadow(0 0 10px var(--color-cyan)) drop-shadow(0 0 18px var(--color-purple));
+    transform: translateY(0);
+  }
+}
 
 /* Global styles */
 body {
@@ -82,8 +85,9 @@ body {
 
 body::before {
   content: '';
-  position: fixed; inset: 0;
-  background: rgba(10,8,24,0.7);
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 24, 0.7);
   pointer-events: none;
   z-index: 0;
 }

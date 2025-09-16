@@ -121,7 +121,7 @@ export default function NavBar() {
 
                             <button
                                 onClick={() => setOpen(false)}
-                                className="absolute top-4 right-4 text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+                                className="absolute top-4 right-4 text-cyan-light/50 hover:[text-shadow:0_0_10px_var(--color-cyan-light)] hover:text-cyan-light transition-all duration-200 hover:scale-110"
                                 aria-label="Close Menu"
                             >
                                 <MdClose size={24} />
@@ -132,7 +132,7 @@ export default function NavBar() {
                                     <button 
                                         key={item.label}
                                         onClick={() => scrollToSection(item.href)}
-                                        className="text-2xl font-family-heading text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] transition-all tracking-wider">
+                                        className="text-2xl font-family-heading text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] transition-all tracking-wider hover:scale-110">
                                             {item.label}
                                         </button>
                                 ))}
@@ -145,7 +145,7 @@ export default function NavBar() {
                                     aria-label={label}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-cyan-light/70 hover:text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] transition-all"
+                                    className="text-cyan-light/70 hover:text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] transition-all hover:scale-110"
                                     >
                                     <Icon size={28} />
                                     </a>

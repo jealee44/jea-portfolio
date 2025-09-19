@@ -2,6 +2,7 @@ import StatusWindow from './components/StatusWindow/StatusWindow'
 import Avatar from './components/StatusWindow/Avatar'
 import NavBar from './components/Nav/NavBar'
 import QuestLog from './components/Projects/QuestLog'
+import TalentTree from './components/Skills/TalentTree'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         </div>
       </section>
       <QuestLog />
+      <TalentTree />
     </>
   )
 }

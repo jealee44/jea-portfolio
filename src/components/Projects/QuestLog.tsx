@@ -3,7 +3,6 @@ import { QUESTS } from '../../data/quests'
 import { MdOpenInNew, MdCode, MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import { motion, AnimatePresence } from 'motion/react'
 
-/* ---------- Confirm Modal ---------- */
 function ConfirmModal({
   open,
   onClose,
@@ -24,12 +23,9 @@ function ConfirmModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div
-            className="absolute inset-0 bg-[var(--color-dark)]/90 backdrop-blur-md"
-            onClick={onClose}
-          />
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
           <motion.div
-            className="absolute top-1/2 left-1/2 w-[90%] max-w-sm -translate-x-1/2 -translate-y-1/2 border-2 border-[var(--color-cyan-light)]/50 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)]"
+            className="border-cyan-light/50 absolute top-1/2 left-1/2 w-[90%] max-w-sm -translate-x-1/2 -translate-y-1/2 border-2 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)]"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -38,7 +34,7 @@ function ConfirmModal({
             aria-modal="true"
           >
             <div className="mb-4 text-center">
-              <div className="mb-3 inline-block border border-[var(--color-cyan-light)]/30 bg-[var(--color-dark)]/50 px-4 py-1">
+              <div className="border-cyan-light/30 bg-dark/40 mb-3 inline-block border px-4 py-1">
                 <span className="font-family-heading text-cyan-light text-2xl tracking-wider [text-shadow:0_0_10px_var(--color-cyan-light)]">
                   Warning
                 </span>
@@ -48,13 +44,13 @@ function ConfirmModal({
             <div className="mt-6 flex justify-center gap-3">
               <button
                 onClick={onClose}
-                className="font-family-game text-cyan-light/80 hover:text-cyan-light border border-[var(--color-cyan-light)]/30 px-3 py-1.5 hover:[text-shadow:0_0_8px_var(--color-cyan-light)]"
+                className="font-family-game border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light border px-3 py-1.5 hover:[text-shadow:0_0_8px_var(--color-cyan-light)]"
               >
                 Cancel
               </button>
               <button
                 onClick={onConfirm}
-                className="font-family-game border-2 border-[var(--color-gold-light)]/60 px-3 py-1.5 text-[color:var(--color-gold-light)] hover:[text-shadow:0_0_10px_var(--color-gold-light)]"
+                className="font-family-game border-gold-light/60 text-gold-light border-2 px-3 py-1.5 hover:[text-shadow:0_0_10px_var(--color-gold-light)]"
               >
                 Confirm
               </button>
@@ -66,17 +62,14 @@ function ConfirmModal({
   )
 }
 
-/* ---------- Quest Log ---------- */
 export default function QuestLog() {
   const [index, setIndex] = useState(0)
   const [confirmUrl, setConfirmUrl] = useState<string | null>(null)
-
   const q = useMemo(() => QUESTS[index], [index])
 
-  const goto = useCallback(
-    (dir: -1 | 1) => setIndex((i) => (i + dir + QUESTS.length) % QUESTS.length),
-    [],
-  )
+  const goto = useCallback((dir: -1 | 1) => {
+    setIndex((i) => (i + dir + QUESTS.length) % QUESTS.length)
+  }, [])
 
   const openLink = (url?: string) => {
     if (!url) return
@@ -88,7 +81,6 @@ export default function QuestLog() {
     setConfirmUrl(null)
   }
 
-  // Optional: allow ← / → keys to switch quests
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') goto(-1)
@@ -98,16 +90,17 @@ export default function QuestLog() {
     return () => window.removeEventListener('keydown', onKey)
   }, [goto])
 
+  const isPlanned = !!q.planned
+
   return (
     <section id="projects" className="container-quest scroll-mt-24 py-24">
-      {/* Title + subtitle */}
       <div className="mb-10 text-center">
-        <div className="inline-block border border-[var(--color-cyan-light)]/30 bg-[var(--color-dark)]/40 px-8 py-2">
+        <div className="border-cyan-light/30 bg-dark/40 inline-block border px-8 py-2">
           <h2 className="font-family-heading text-cyan-light text-4xl tracking-wider [text-shadow:0_0_10px_var(--color-cyan-light)] sm:text-5xl">
             Quest Log
           </h2>
         </div>
-        <p className="font-family-body text-cyan-light/80 mx-auto mt-4 max-w-[70ch] text-(length:--fs-body)">
+        <p className="font-family-body text-cyan-light/80 mx-auto mt-4 max-w-[70ch] text-[length:var(--fs-body)]">
           A chronicle of quests completed and in-progress by{' '}
           <span className="text-cyan-light font-semibold">Jea Lee</span>—each one a dungeon clear:
           tools forged, bugs vanquished, and users rescued from needless friction. Browse entries,
@@ -115,21 +108,28 @@ export default function QuestLog() {
         </p>
       </div>
 
-      {/* Card */}
       <motion.article
         key={q.id}
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
-        className="min-h-[460px] border-2 border-[var(--color-cyan-light)]/40 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] sm:p-8 lg:min-h-[520px]"
+        className={`border-cyan-light/40 max-h-[650px] border-2 p-4 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] md:h-[480px] md:p-6 lg:h-[540px] lg:p-8 ${
+          isPlanned ? 'opacity-85 grayscale-[35%]' : ''
+        }`}
         aria-labelledby={`quest-${q.id}-title`}
       >
-        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[min(42vw,680px)_1fr] lg:gap-10">
-          {/* Image (left on desktop) */}
-          <div className="order-2 lg:order-1">
-            <div className="relative mx-auto aspect-[16/10] w-full max-w-[720px] overflow-hidden border border-[var(--color-cyan-light)]/30 bg-[var(--color-dark)]/40">
+        <div className="flex h-full flex-col md:flex-row md:gap-6 lg:gap-8">
+          <h3
+            id={`quest-${q.id}-title`}
+            className="font-family-heading text-cyan-light mb-3 text-center text-2xl md:hidden"
+          >
+            {q.title}
+          </h3>
+
+          <div className="mb-4 md:mb-0 md:h-full md:w-[45%] md:flex-shrink-0 lg:w-[50%]">
+            <div className="border-cyan-light/30 bg-dark/40 relative h-[200px] w-full overflow-hidden border md:h-full">
               <img
-                src={q.image} // e.g. '/images/ditto.png' (public/images)
+                src={q.image}
                 alt={`${q.title} screenshot`}
                 loading="lazy"
                 decoding="async"
@@ -139,68 +139,95 @@ export default function QuestLog() {
             </div>
           </div>
 
-          {/* Details (right on desktop) */}
-          <div className="order-3 lg:order-2">
-            <h3
-              id={`quest-${q.id}-title`}
-              className="font-family-heading text-cyan-light mb-4 text-center text-3xl sm:text-4xl lg:text-left"
-            >
+          <div className="flex flex-1 flex-col overflow-hidden md:h-full">
+            <h3 className="font-family-heading text-cyan-light mb-2 hidden text-xl md:mb-3 md:block md:text-2xl lg:text-3xl">
               {q.title}
             </h3>
 
-            <p className="font-family-body text-cyan-light/85 leading-relaxed">{q.blurb}</p>
+            <div className="mb-3 max-h-[150px] flex-1 overflow-y-auto md:mb-4 md:max-h-none">
+              <div className="font-family-body text-cyan-light/85 text-sm leading-relaxed md:text-sm lg:text-base">
+                <p>{q.blurb}</p>
+                {isPlanned && q.planned && (
+                  <div className="text-cyan-light/80 mt-2 space-y-1 md:mt-3 md:space-y-2">
+                    <p>
+                      <span className="text-cyan-light font-semibold">Problem:</span>{' '}
+                      {q.planned.problem}
+                    </p>
+                    <p>
+                      <span className="text-cyan-light font-semibold">Solution:</span>{' '}
+                      {q.planned.solution}
+                    </p>
+                    <p className="pt-1">
+                      <span className="text-cyan-light font-semibold">MVP:</span>{' '}
+                      {q.planned.mvp.join(' · ')}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {q.tech.map((t) => (
-                <li
-                  key={t}
-                  className="font-family-game text-cyan-light/90 border border-[var(--color-cyan-light)]/30 bg-[var(--color-dark)]/40 px-2.5 py-1 text-xs tracking-wide"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-auto">
+              <ul className="mb-3 flex flex-wrap gap-1 md:mb-4 md:gap-2">
+                {q.tech.map((t) => (
+                  <li
+                    key={t}
+                    className="font-family-game border-cyan-light/30 bg-dark/40 text-cyan-light/90 border px-1.5 py-0.5 text-[10px] tracking-wide md:px-2.5 md:py-1 md:text-xs"
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              {q.live && (
-                <button
-                  type="button"
-                  onClick={() => openLink(q.live)}
-                  className="font-family-game inline-flex items-center gap-2 border-2 border-[var(--color-gold-light)]/60 px-3 py-1.5 text-[color:var(--color-gold-light)] hover:[text-shadow:0_0_10px_var(--color-gold-light)]"
-                >
-                  <MdOpenInNew size={18} />
-                  Visit Site
-                </button>
-              )}
-
-              {q.code && (
-                <button
-                  type="button"
-                  onClick={() => openLink(q.code)}
-                  className="font-family-game text-cyan-light/90 hover:text-cyan-light inline-flex items-center gap-2 border border-[var(--color-cyan-light)]/40 px-3 py-1.5 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
-                >
-                  <MdCode size={18} />
-                  View Code
-                </button>
-              )}
+              <div className="flex flex-wrap gap-2 md:gap-3">
+                {isPlanned ? (
+                  <span
+                    aria-label="Coming Soon"
+                    className="font-family-game border-cyan-light/30 text-cyan-light/70 inline-flex items-center gap-1 border px-2 py-1 text-xs md:gap-2 md:px-3 md:py-1.5 md:text-sm"
+                  >
+                    Coming Soon
+                  </span>
+                ) : (
+                  <>
+                    {q.live && (
+                      <button
+                        type="button"
+                        onClick={() => openLink(q.live)}
+                        className="font-family-game border-gold-light/60 text-gold-light inline-flex items-center gap-1 border-2 px-2 py-1 text-xs hover:[text-shadow:0_0_10px_var(--color-gold-light)] md:gap-2 md:px-3 md:py-1.5 md:text-sm"
+                      >
+                        <MdOpenInNew size={16} className="md:h-[18px] md:w-[18px]" />
+                        Visit Site
+                      </button>
+                    )}
+                    {q.code && (
+                      <button
+                        type="button"
+                        onClick={() => openLink(q.code)}
+                        className="font-family-game border-cyan-light/40 text-cyan-light/90 hover:text-cyan-light inline-flex items-center gap-1 border px-2 py-1 text-xs hover:[text-shadow:0_0_10px_var(--color-cyan-light)] md:gap-2 md:px-3 md:py-1.5 md:text-sm"
+                      >
+                        <MdCode size={16} className="md:h-[18px] md:w-[18px]" />
+                        View Code
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </motion.article>
 
-      {/* Arrows */}
       <div className="mt-6 flex items-center justify-center gap-4">
         <button
           aria-label="Previous quest"
           onClick={() => goto(-1)}
-          className="text-cyan-light/80 hover:text-cyan-light rounded border border-[var(--color-cyan-light)]/30 p-2 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+          className="border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light rounded border p-2 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
         >
           <MdChevronLeft size={26} />
         </button>
         <button
           aria-label="Next quest"
           onClick={() => goto(1)}
-          className="text-cyan-light/80 hover:text-cyan-light rounded border border-[var(--color-cyan-light)]/30 p-2 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+          className="border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light rounded border p-2 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
         >
           <MdChevronRight size={26} />
         </button>

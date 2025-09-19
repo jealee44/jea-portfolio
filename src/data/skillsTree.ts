@@ -136,7 +136,7 @@ export const TREES: TalentTree[] = [
         name: 'Supabase',
         level: 0,
         Icon: SiReact,
-        row: 5,
+        row: 4, // <-- CHANGED from row 5 to 4
         planned: true,
         color: '#3ECF8E',
       },
@@ -145,7 +145,7 @@ export const TREES: TalentTree[] = [
         name: 'Angular',
         level: 0,
         Icon: SiReact,
-        row: 5,
+        row: 4, // <-- CHANGED from row 5 to 4
         planned: true,
         color: '#DD0031',
       },

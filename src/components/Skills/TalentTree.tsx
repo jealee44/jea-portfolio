@@ -5,7 +5,16 @@ import { TREES, type TalentTree, type TalentNode } from '../../data/skillsTree'
 function NodeChip({ n }: { n: TalentNode }) {
   const planned = n.planned
   return (
-    <div className="group relative flex flex-col items-center">
+    <div
+      className="group relative flex flex-col items-center"
+      style={{
+        // tweak these numbers to taste
+        ['--gap-chip-lv' as any]: '4px',
+        ['--gap-lv-tip' as any]: '6px',
+        ['--gap-chip-lv-sm' as any]: '6px',
+        ['--gap-lv-tip-sm' as any]: '8px',
+      }}
+    >
       <div
         className={[
           'flex items-center justify-center rounded-full border transition-transform duration-150',
@@ -23,11 +32,17 @@ function NodeChip({ n }: { n: TalentNode }) {
           style={planned ? undefined : { color: n.color }}
         />
       </div>
-      <div className="border-cyan-light/30 bg-dark/60 font-family-game text-cyan-light/90 pointer-events-none absolute top-full mt-1 grid h-5 min-w-[50px] place-items-center rounded border px-1.5 text-[10px] leading-none sm:mt-1 sm:text-[11px]">
-        {planned ? 'LV 0' : `LV ${n.level}`}
-      </div>
-      <div className="border-cyan-light/20 bg-dark/80 font-family-body text-cyan-light pointer-events-none absolute top-full mt-8 rounded border px-2 py-1 text-[11px] whitespace-nowrap opacity-0 shadow transition-opacity duration-150 group-hover:opacity-100 sm:mt-9">
-        {n.name}
+
+      {/* NEW: wrapper anchors tooltip to the LV pill */}
+      <div className="relative mt-[var(--gap-chip-lv)] sm:mt-[var(--gap-chip-lv-sm)]">
+        <div className="border-cyan-light/30 bg-dark/60 text-cyan-light/90 font-family-game pointer-events-none grid h-5 min-w-[50px] place-items-center rounded border px-1.5 text-[10px] leading-none sm:text-[11px]">
+          {planned ? 'LV 0' : `LV ${n.level}`}
+        </div>
+
+        {/* Tooltip now positions below LV, not the icon */}
+        <div className="border-cyan-light/20 text-cyan-light pointer-events-none absolute top-full left-1/2 mt-[var(--gap-lv-tip)] -translate-x-1/2 rounded border bg-[rgba(10,8,24,0.92)] px-2 py-1 text-[11px] whitespace-nowrap opacity-0 shadow transition-opacity duration-150 group-hover:opacity-100 sm:mt-[var(--gap-lv-tip-sm)]">
+          {n.name}
+        </div>
       </div>
     </div>
   )
@@ -52,6 +67,8 @@ function Column({ tree }: { tree: TalentTree }) {
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10">
               {r.arr.map((n) => (
                 <div key={n.id} className="group">
+                  {' '}
+                  {/* This 'group' is crucial for NodeChip's tooltip hover */}
                   <NodeChip n={n} />
                 </div>
               ))}
@@ -92,12 +109,12 @@ function TreeCard({ tree }: { tree: TalentTree }) {
       layout
       className="border-cyan-light/40 relative border-2 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] sm:p-6 lg:p-8"
     >
-      <h3 className="font-family-heading text-cyan-light mb-4 text-center text-3xl [text-shadow:0_0_10px_var(--color-cyan-light)]">
+      <h3 className="font-family-heading text-cyan-light mb-4 text-center text-3xl">
         {tree.title}
       </h3>
       <div
         ref={ref}
-        className={needsScroll ? 'glow-scroll overflow-y-auto' : 'overflow-visible'}
+        className={needsScroll ? 'glow-scroll overflow-y-auto pb-8' : 'overflow-visible pb-8'} // Added pb-8 here
         style={needsScroll ? { maxHeight: MAX } : undefined}
       >
         <Column tree={tree} />
@@ -115,7 +132,7 @@ export default function TalentTree() {
     <section id="skills" className="container-90 scroll-mt-24 py-24">
       <div className="mb-8 text-center">
         <div className="border-cyan-light/30 bg-dark/40 inline-block border px-8 py-2">
-          <h2 className="font-family-heading text-cyan-light text-4xl tracking-wider [text-shadow:0_0_10px_var(--color-cyan-light)] sm:text-5xl">
+          <h2 className="font-family-heading text-cyan-light text-4xl tracking-wider sm:text-5xl">
             Skills Talent Tree
           </h2>
         </div>
@@ -135,12 +152,11 @@ export default function TalentTree() {
           <button
             key={b.id}
             onClick={() => setActive(b.id as 'all' | TalentTree['id'])}
-            className={[
-              'font-family-game border px-3 py-1.5 text-sm tracking-wide',
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-150 ${
               active === b.id
-                ? 'border-cyan-light/60 text-cyan-light [text-shadow:0_0_10px_var(--color-cyan-light)]'
-                : 'border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light',
-            ].join(' ')}
+                ? 'border-cyan-light text-cyan-light [box-shadow:0_0_12px_var(--color-cyan-light-rgb-5)]'
+                : 'border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light'
+            } `}
           >
             {b.label}
           </button>

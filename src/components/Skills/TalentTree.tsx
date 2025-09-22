@@ -2,18 +2,24 @@ import { useMemo, useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { TREES, type TalentTree, type TalentNode } from '../../data/skillsTree'
 
+type NodeChipStyleVars = React.CSSProperties & {
+  '--gap-chip-lv': string
+  '--gap-lv-tip': string
+  '--gap-chip-lv-sm': string
+  '--gap-lv-tip-sm': string
+}
+
 function NodeChip({ n }: { n: TalentNode }) {
   const planned = n.planned
+  const styleVars: NodeChipStyleVars = {
+    '--gap-chip-lv': '4px',
+    '--gap-lv-tip': '6px',
+    '--gap-chip-lv-sm': '6px',
+    '--gap-lv-tip-sm': '8px',
+  }
+
   return (
-    <div
-      className="group relative flex flex-col items-center"
-      style={{
-        ['--gap-chip-lv' as any]: '4px',
-        ['--gap-lv-tip' as any]: '6px',
-        ['--gap-chip-lv-sm' as any]: '6px',
-        ['--gap-lv-tip-sm' as any]: '8px',
-      }}
-    >
+    <div className="group relative flex flex-col items-center" style={styleVars}>
       <div
         className={[
           'flex items-center justify-center rounded-full border transition-transform duration-150',
@@ -36,7 +42,6 @@ function NodeChip({ n }: { n: TalentNode }) {
         <div className="border-cyan-light/30 bg-dark/60 text-cyan-light/90 font-family-game pointer-events-none grid h-5 min-w-[50px] place-items-center rounded border px-1.5 text-[10px] leading-none sm:text-[11px]">
           {planned ? 'LV 0' : `LV ${n.level}`}
         </div>
-
         <div className="border-cyan-light/20 text-cyan-light pointer-events-none absolute top-full left-1/2 mt-[var(--gap-lv-tip)] -translate-x-1/2 rounded border bg-[rgba(10,8,24,0.92)] px-2 py-1 text-[11px] whitespace-nowrap opacity-0 shadow transition-opacity duration-150 group-hover:opacity-100 sm:mt-[var(--gap-lv-tip-sm)]">
           {n.name}
         </div>

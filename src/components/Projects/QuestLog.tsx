@@ -1,4 +1,3 @@
-// src/components/Projects/QuestLog.tsx
 import { useMemo, useState, useEffect, useCallback } from 'react'
 import { QUESTS } from '../../data/quests'
 import { MdOpenInNew, MdCode, MdChevronLeft, MdChevronRight } from 'react-icons/md'
@@ -113,9 +112,7 @@ export default function QuestLog() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
-        className={`border-cyan-light/40 max-h-[700px] border-2 p-4 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] md:h-[520px] md:p-6 lg:h-[580px] lg:p-8 ${
-          isPlanned ? 'opacity-85 grayscale-[35%]' : ''
-        }`}
+        className={`border-cyan-light/40 max-h-[700px] border-2 p-4 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] md:h-[520px] md:p-6 lg:h-[580px] lg:p-8 ${isPlanned ? 'opacity-85 grayscale-[35%]' : ''}`}
         aria-labelledby={`quest-${q.id}-title`}
       >
         <div className="flex h-full flex-col md:flex-row md:gap-6 lg:gap-8">

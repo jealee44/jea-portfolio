@@ -1,9 +1,7 @@
 import { motion, type Variants } from 'motion/react'
 import StatBar from './StatBar'
 
-type StatusWindowProps = {
-  maxHeight?: number
-}
+type StatusWindowProps = { maxHeight?: number }
 
 const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
   type Stats = {
@@ -37,20 +35,16 @@ const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
       variants={variants}
       initial="hidden"
       animate="visible"
-      // add bottom spacing on mobile so the avatar never overlaps
       className="relative z-10 mb-16 w-full lg:mb-0"
       style={maxHeight ? { maxHeight } : undefined}
     >
-      {/* a little taller on mobile so you always see multiple lines */}
       <div className="border-cyan-light/50 flex h-full min-h-[520px] w-full flex-col border-2 px-8 py-8 [box-shadow:var(--panel-shadow)] backdrop-blur-md [background:var(--panel-gradient)] md:min-h-[460px] md:px-10 md:py-10">
-        {/* Name */}
         <div className="mb-8 flex flex-col items-center">
           <h1 className="font-family-body text-cyan-light text-3xl [text-shadow:0_0_10px_var(--color-cyan-light)] md:text-4xl">
             {stats.name}
           </h1>
         </div>
 
-        {/* Level / Title — aligned with bars on desktop, stacked/centered on mobile */}
         <div className="mb-6 grid grid-cols-1 gap-3 text-center md:mb-8 md:grid-cols-2 md:gap-4 md:text-center">
           <div className="text-cyan-light font-family-game text-sm leading-tight md:text-base">
             LEVEL {stats.level}
@@ -61,7 +55,6 @@ const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
           </div>
         </div>
 
-        {/* Bars */}
         <div className="mb-6 grid grid-cols-1 gap-6 md:mb-8 md:grid-cols-2">
           <StatBar
             label="Energy"
@@ -79,10 +72,8 @@ const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
           />
         </div>
 
-        {/* underline sits between bars and description */}
         <div className="border-cyan-light/40 mb-4 border-t md:mb-6" />
 
-        {/* Description scroll area (recent achievement at the bottom of this area) */}
         <div className="glow-scroll flex-1 overflow-y-auto">
           <section aria-labelledby="about-desc">
             <h2 id="about-desc" className="sr-only">
@@ -103,8 +94,6 @@ const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
               his lost golf balls or raising his <strong className="text-green/90">STR</strong> at
               the local gym.
             </p>
-
-            {/* recent achievement pinned to the bottom of the scroll content */}
             <p className="font-family-body text-cyan-light mt-4 md:mt-6">
               <strong className="text-cyan-light">Recent achievement:</strong>{' '}
               <strong className="text-cyan-light/80">

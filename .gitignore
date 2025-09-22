@@ -1,3 +1,7 @@
+node_modules/
+dist/
+.vercel/
+
 logs
 *.log
 npm-debug.log*
@@ -6,8 +10,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
 .env
+.env.local
+.env.*.local
+
 .DS_Store
-.prettierignore
+Thumbs.db
+.idea/
+.vscode/
+
+.eslintcache
+coverage/
+*.local

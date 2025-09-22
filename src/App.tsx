@@ -30,7 +30,6 @@ export default function App() {
   return (
     <>
       <NavBar />
-
       <section id="about" className="container-90 pt-48 lg:pt-60">
         <div className="text-center">
           <div className="border-gold-light/50 bg-dark/40 inline-block border px-8 py-2">
@@ -44,12 +43,10 @@ export default function App() {
             use. Below is my current loadout and recent activity.
           </p>
         </div>
-
         <div className="isolate mt-8 grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex">
             <StatusWindow maxHeight={avatarH} />
           </div>
-
           <div
             className="relative z-0 mt-14 flex items-center justify-center sm:mt-16 lg:mt-0"
             ref={avatarRef}
@@ -58,7 +55,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       <QuestLog />
       <TalentTree />
     </>

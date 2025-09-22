@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap');
 @import 'tailwindcss';
 
 @font-face {
   font-family: 'Solo Leveling';
-  src: url('/fonts/Eternal.ttf') format('truetype');
+  src:
+    url('/fonts/Eternal.woff2') format('woff2'),
+    url('/fonts/Eternal.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-/* app.css */
+
 .glow-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(163, 230, 255, 0.6) rgba(10, 8, 24, 0.5);
@@ -40,7 +41,6 @@
   --font-family-heading: 'Solo Leveling', 'Bebas Neue', sans-serif;
   --font-family-body: 'Inter', 'Noto Sans', system-ui, sans-serif;
   --font-family-game: 'Orbitron', monospace;
-
   --color-dark: #0a0818;
   --color-medium: #1a1230;
   --color-light: #2a1f4a;
@@ -53,10 +53,8 @@
   --color-cyan-light: #a3e6ff;
   --color-green: #39ff88;
   --color-green-light: #b9ff73;
-
   --panel-gradient: linear-gradient(135deg, var(--color-dark), var(--color-medium));
   --panel-shadow: 0 0 30px rgba(163, 230, 255, 0.4), inset 0 0 30px rgba(163, 230, 255, 0.1);
-
   --fs-body: clamp(0.95rem, 0.9rem + 0.35vw, 1.15rem);
 }
 
@@ -97,12 +95,11 @@
   }
 }
 
-/* Global styles */
 body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-family-body);
-  background-image: url('/images/background.jpg');
+  background-image: url('/images/background.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

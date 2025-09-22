@@ -154,7 +154,7 @@ export default function TalentTree() {
         ].map((b) => (
           <button
             key={b.id}
-            onClick={() => setActive(b.id as 'all' | TalentTree['id'])}
+            onClick={() => setActive(b.id as typeof active)}
             className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-150 ${
               active === b.id
                 ? 'border-gold-light text-gold-light [text-shadow:0_0_10px_var(--color-gold-light)]'

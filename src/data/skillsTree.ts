@@ -1,4 +1,3 @@
-// src/data/skillsTree.ts
 import type { IconType } from 'react-icons'
 import {
   SiJavascript,
@@ -64,10 +63,8 @@ export const TREES: TalentTree[] = [
     nodes: [
       { id: 'js', name: 'JavaScript', level: 2, Icon: SiJavascript, row: 1, color: '#F7DF1E' },
       { id: 'ts', name: 'TypeScript', level: 2, Icon: SiTypescript, row: 2, color: '#3178C6' },
-
       { id: 'html', name: 'HTML5', level: 2, Icon: SiHtml5, row: 3, color: '#E34F26' },
       { id: 'css', name: 'CSS3', level: 2, Icon: SiCss3, row: 3, color: '#1572B6' },
-
       {
         id: 'tailwind',
         name: 'Tailwind CSS',
@@ -77,7 +74,6 @@ export const TREES: TalentTree[] = [
         color: '#38BDF8',
       },
       { id: 'react', name: 'React', level: 2, Icon: SiReact, row: 4, color: '#61DAFB' },
-
       { id: 'redux', name: 'Redux', level: 2, Icon: SiRedux, row: 5, color: '#764ABC' },
       {
         id: 'router',
@@ -87,8 +83,6 @@ export const TREES: TalentTree[] = [
         row: 5,
         color: '#CA4245',
       },
-
-      // Row 6 now has two known tools: TanStack + Vite
       {
         id: 'tanstack',
         name: 'TanStack Query',
@@ -98,9 +92,7 @@ export const TREES: TalentTree[] = [
         color: '#FF4154',
       },
       { id: 'vite', name: 'Vite', level: 2, Icon: SiVite, row: 6, color: '#646CFF' },
-
       { id: 'next', name: 'Next.js', level: 1, Icon: SiNextdotjs, row: 7, color: '#FFFFFF' },
-
       {
         id: 'a11y',
         name: 'Accessibility',
@@ -117,8 +109,6 @@ export const TREES: TalentTree[] = [
         row: 8,
         color: '#F44B21',
       },
-
-      // Planned next
       {
         id: 'storybook',
         name: 'Storybook',
@@ -130,7 +120,6 @@ export const TREES: TalentTree[] = [
       },
     ],
   },
-
   {
     id: 'backend',
     title: 'Backend | Database',
@@ -138,13 +127,10 @@ export const TREES: TalentTree[] = [
       { id: 'node', name: 'Node.js', level: 2, Icon: SiNodedotjs, row: 1, color: '#339933' },
       { id: 'express', name: 'Express', level: 2, Icon: SiExpress, row: 2, color: '#FFFFFF' },
       { id: 'rest', name: 'REST APIs', level: 2, Icon: TbApi, row: 3, color: '#009688' },
-
       { id: 'pg', name: 'PostgreSQL', level: 2, Icon: SiPostgresql, row: 4, color: '#336791' },
       { id: 'mongo', name: 'MongoDB', level: 2, Icon: SiMongodb, row: 4, color: '#47A248' },
-
       { id: 'jwt', name: 'JWT', level: 2, Icon: RiShieldKeyholeLine, row: 5, color: '#000000' },
       { id: 'oauth', name: 'OAuth2', level: 2, Icon: SiAuth0, row: 5, color: '#EB5424' },
-
       { id: 'audit', name: 'Audit', level: 2, Icon: AiOutlineAudit, row: 6, color: '#4285F4' },
       {
         id: 'supabase',
@@ -155,7 +141,6 @@ export const TREES: TalentTree[] = [
         planned: true,
         color: '#3ECF8E',
       },
-
       {
         id: 'redis',
         name: 'Redis',
@@ -174,7 +159,6 @@ export const TREES: TalentTree[] = [
         planned: true,
         color: '#2D3748',
       },
-
       {
         id: 'graphql',
         name: 'GraphQL',
@@ -195,7 +179,6 @@ export const TREES: TalentTree[] = [
       },
     ],
   },
-
   {
     id: 'ops',
     title: 'Testing | DevOps | Process',
@@ -209,12 +192,9 @@ export const TREES: TalentTree[] = [
         row: 1,
         color: '#E33332',
       },
-
       { id: 'eslint', name: 'ESLint', level: 2, Icon: SiEslint, row: 2, color: '#4B32C3' },
       { id: 'prettier', name: 'Prettier', level: 2, Icon: SiPrettier, row: 2, color: '#F7B93E' },
-
       { id: 'aws', name: 'AWS', level: 2, Icon: SiAmazon, row: 3, color: '#FF9900' },
-
       { id: 'docker', name: 'Docker', level: 2, Icon: SiDocker, row: 4, color: '#2496ED' },
       {
         id: 'gha',
@@ -224,7 +204,6 @@ export const TREES: TalentTree[] = [
         row: 4,
         color: '#2088FF',
       },
-
       {
         id: 'observability',
         name: 'Observability',
@@ -234,7 +213,6 @@ export const TREES: TalentTree[] = [
         color: '#00BFA5',
       },
       { id: 'jira', name: 'Jira', level: 2, Icon: SiJira, row: 5, color: '#0052CC' },
-
       {
         id: 'k8s',
         name: 'Kubernetes',

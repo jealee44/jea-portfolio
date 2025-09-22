@@ -9,8 +9,7 @@ const NAV: readonly NavItem[] = [
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
-  // Point to the PDF in /public and mark as download
-  { href: '/JHyun Lee Resume.pdf', label: 'Resume', download: true },
+  { href: '/JHyunLee_Resume.pdf', label: 'Resume', download: true },
 ] as const
 
 const SOCIAL = [
@@ -54,14 +53,11 @@ export default function NavBar() {
           >
             JEA LEE
           </a>
-
-          {/* Desktop */}
           <div className="hidden items-center gap-6 md:flex">
             <ul className="font-family-heading text-cyan-light/85 flex items-center gap-6 text-base md:text-xl">
               {NAV.map((n) => (
                 <li key={n.label}>
                   {n.download ? (
-                    // Download link for Resume
                     <a
                       href={n.href}
                       download
@@ -80,13 +76,14 @@ export default function NavBar() {
                 </li>
               ))}
             </ul>
-
             <div className="ml-2 flex items-center gap-3">
               {SOCIAL.map(({ href, label, Icon }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="text-cyan-light/70 hover:text-cyan-light rounded p-1 hover:[text-shadow:0_0_10px_var(--color-cyan-light)] focus:ring-2 focus:ring-[color:var(--color-cyan-light)]/60 focus:outline-none"
                 >
                   <Icon size={22} />
@@ -94,8 +91,6 @@ export default function NavBar() {
               ))}
             </div>
           </div>
-
-          {/* Mobile trigger */}
           <button
             type="button"
             aria-label="Open Menu"
@@ -106,8 +101,6 @@ export default function NavBar() {
           </button>
         </nav>
       </header>
-
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -120,7 +113,6 @@ export default function NavBar() {
               className="bg-dark/95 absolute inset-0 backdrop-blur-md"
               onClick={() => setOpen(false)}
             />
-
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -135,11 +127,9 @@ export default function NavBar() {
               >
                 <MdClose size={24} />
               </button>
-
               <nav className="mt-8 flex flex-col items-center gap-6">
                 {NAV.map((n) =>
                   n.download ? (
-                    // Mobile: a tag with download, close the sheet on click
                     <a
                       key={n.label}
                       href={n.href}
@@ -159,7 +149,6 @@ export default function NavBar() {
                     </button>
                   ),
                 )}
-
                 <div className="mt-6 flex items-center gap-6 border-t border-[var(--color-cyan-light)]/30 pt-6">
                   {SOCIAL.map(({ href, label, Icon }) => (
                     <a

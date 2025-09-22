@@ -1,4 +1,3 @@
-// src/data/quests.ts
 export type Quest = {
   id: string
   title: string
@@ -26,7 +25,7 @@ export const QUESTS: Quest[] = [
       'Database schema migrations often break down due to human error, poor collaboration, and lack of accessible security controls.',
     solution:
       'Ditto centralizes migration management with built-in version control and RBAC, giving teams a secure and collaborative way to update databases without errors.',
-    image: '/images/ditto.png',
+    image: '/images/ditto.webp',
     tech: ['React', 'Redux', 'TypeScript', 'AWS', 'Node.js', 'PostgreSQL', 'Docker', 'CI/CD'],
     code: 'https://github.com/oslabs-beta/ditto',
   },
@@ -39,7 +38,7 @@ export const QUESTS: Quest[] = [
       'Most portfolios feel static and interchangeable which makes it hard to convey personality and craft.',
     solution:
       'Build a living UI with a consistent theme, reusable components, and motion that still loads fast and reads clearly.',
-    image: '/images/website.png',
+    image: '/images/website.webp',
     tech: ['React', 'Tailwind', 'Motion'],
     code: 'https://github.com/jealee44/jea-portfolio',
   },
@@ -52,7 +51,7 @@ export const QUESTS: Quest[] = [
       'Gamers with large libraries often waste hours deciding what to play, sometimes ending up playing nothing at all.',
     solution:
       'Gamebook simplifies discovery by curating options and tracking favorites, so you can spend less time choosing and more time playing.',
-    image: '/images/gamebook.png',
+    image: '/images/gamebook.webp',
     tech: ['React', 'MongoDB', 'Mongoose', 'Node.js'],
     code: 'https://github.com/codesmith-goblin-sharks/gamebook',
   },
@@ -65,7 +64,7 @@ export const QUESTS: Quest[] = [
       'Plotting beds, companions, and spacing by hand led to mistakes and rework once the season started.',
     solution:
       'Design an interactive planner with persistent state and simple rules so layouts are clear before planting.',
-    image: '/images/garden.png',
+    image: '/images/garden.webp',
     tech: ['JavaScript', 'CSS', 'Webpack', 'Node.js', 'Jest'],
     code: 'https://github.com/Heat-Seeking-Devil-Chicken-Corporation/ShellScape-Garden-Planner',
   },
@@ -78,7 +77,7 @@ export const QUESTS: Quest[] = [
       'Coordinating plans with friends is frustrating and time-consuming when you have to manually ask each person’s availability.',
     solution:
       'Meet With Friends automates scheduling by comparing linked calendars and surfacing the best time for everyone to meet.',
-    image: '/images/meetfriends.png',
+    image: '/images/meetfriends.webp',
     tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'REST API', 'PostgreSQL', 'OAuth 2.0'],
     code: 'https://github.com/csjigglypuff/scheduleapp/tree/dev',
   },
@@ -87,7 +86,7 @@ export const QUESTS: Quest[] = [
     title: 'CaloricX',
     blurb:
       'Adaptive calorie-budget app that recalculates targets weekly from weight, activity, and results.',
-    image: '/images/caloricx.png',
+    image: '/images/caloricx.webp',
     tech: ['React', 'TypeScript', 'Tanstack Query', 'Next.js', 'PostgreSQL', 'Supabase', 'Prisma'],
     planned: {
       problem:

@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from 'react'
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import { TREES, type TalentTree, type TalentNode } from '../../data/skillsTree'
 
 function NodeChip({ n }: { n: TalentNode }) {
@@ -8,7 +8,6 @@ function NodeChip({ n }: { n: TalentNode }) {
     <div
       className="group relative flex flex-col items-center"
       style={{
-        // tweak these numbers to taste
         ['--gap-chip-lv' as any]: '4px',
         ['--gap-lv-tip' as any]: '6px',
         ['--gap-chip-lv-sm' as any]: '6px',
@@ -33,13 +32,11 @@ function NodeChip({ n }: { n: TalentNode }) {
         />
       </div>
 
-      {/* NEW: wrapper anchors tooltip to the LV pill */}
       <div className="relative mt-[var(--gap-chip-lv)] sm:mt-[var(--gap-chip-lv-sm)]">
         <div className="border-cyan-light/30 bg-dark/60 text-cyan-light/90 font-family-game pointer-events-none grid h-5 min-w-[50px] place-items-center rounded border px-1.5 text-[10px] leading-none sm:text-[11px]">
           {planned ? 'LV 0' : `LV ${n.level}`}
         </div>
 
-        {/* Tooltip now positions below LV, not the icon */}
         <div className="border-cyan-light/20 text-cyan-light pointer-events-none absolute top-full left-1/2 mt-[var(--gap-lv-tip)] -translate-x-1/2 rounded border bg-[rgba(10,8,24,0.92)] px-2 py-1 text-[11px] whitespace-nowrap opacity-0 shadow transition-opacity duration-150 group-hover:opacity-100 sm:mt-[var(--gap-lv-tip-sm)]">
           {n.name}
         </div>
@@ -67,8 +64,6 @@ function Column({ tree }: { tree: TalentTree }) {
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10">
               {r.arr.map((n) => (
                 <div key={n.id} className="group">
-                  {' '}
-                  {/* This 'group' is crucial for NodeChip's tooltip hover */}
                   <NodeChip n={n} />
                 </div>
               ))}
@@ -105,16 +100,18 @@ function TreeCard({ tree }: { tree: TalentTree }) {
 
   return (
     <motion.div
-      key={tree.id}
-      layout
-      className="border-cyan-light/40 relative border-2 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] sm:p-6 lg:p-8"
+      className="border-cyan-light/40 relative w-full border-2 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] sm:p-6 lg:p-8"
+      initial={{ opacity: 0, x: 32 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -32 }}
+      transition={{ duration: 0.28, ease: 'easeOut' }}
     >
       <h3 className="font-family-heading text-cyan-light mb-4 text-center text-3xl">
         {tree.title}
       </h3>
       <div
         ref={ref}
-        className={needsScroll ? 'glow-scroll overflow-y-auto pb-8' : 'overflow-visible pb-8'} // Added pb-8 here
+        className={needsScroll ? 'glow-scroll overflow-y-auto pb-8' : 'overflow-visible pb-8'}
         style={needsScroll ? { maxHeight: MAX } : undefined}
       >
         <Column tree={tree} />
@@ -131,14 +128,15 @@ export default function TalentTree() {
   return (
     <section id="skills" className="container-90 scroll-mt-24 py-24">
       <div className="mb-8 text-center">
-        <div className="border-cyan-light/30 bg-dark/40 inline-block border px-8 py-2">
-          <h2 className="font-family-heading text-cyan-light text-4xl tracking-wider sm:text-5xl">
-            Skills Talent Tree
+        <div className="border-gold-light/50 bg-dark/40 inline-block border px-8 py-2">
+          <h2 className="font-family-heading text-cyan-light text-4xl tracking-wider [text-shadow:0_0_10px_var(--color-cyan-light)] sm:text-5xl">
+            Skills Tree
           </h2>
         </div>
         <p className="font-family-body text-cyan-light/80 mx-auto mt-4 max-w-[70ch] text-[length:var(--fs-body)]">
-          Three branches of power. Hover a node to reveal its name. Planned talents appear greyed
-          out near the roots of future branches.
+          This tree shows what I use most and what I’m learning next. Hover a node to see the tech
+          and level. Levels represent how many years I've worked with that technology. Greyed nodes
+          are future unlocks I’m planning to level up.
         </p>
       </div>
 
@@ -146,15 +144,15 @@ export default function TalentTree() {
         {[
           { id: 'all', label: 'All Trees' },
           { id: 'frontend', label: 'Frontend' },
-          { id: 'backend', label: 'Backend' },
-          { id: 'ops', label: 'Ops / Testing' },
+          { id: 'backend', label: 'Backend | Database' },
+          { id: 'ops', label: 'Testing | DevOps' },
         ].map((b) => (
           <button
             key={b.id}
             onClick={() => setActive(b.id as 'all' | TalentTree['id'])}
             className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-150 ${
               active === b.id
-                ? 'border-cyan-light text-cyan-light [box-shadow:0_0_12px_var(--color-cyan-light-rgb-5)]'
+                ? 'border-gold-light text-gold-light [text-shadow:0_0_10px_var(--color-gold-light)]'
                 : 'border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light'
             } `}
           >
@@ -164,12 +162,19 @@ export default function TalentTree() {
       </div>
 
       <motion.div
-        layout
-        className={shown.length > 1 ? 'grid grid-cols-1 gap-8 lg:grid-cols-3' : 'grid grid-cols-1'}
+        className={
+          shown.length > 1
+            ? 'grid grid-cols-1 gap-8 lg:grid-cols-3'
+            : 'grid grid-cols-1 justify-center'
+        }
       >
-        {shown.map((tree) => (
-          <TreeCard key={tree.id} tree={tree} />
-        ))}
+        <AnimatePresence mode="popLayout">
+          {shown.map((tree) => (
+            <div key={tree.id} className={shown.length === 1 ? 'mx-auto w-full max-w-4xl' : ''}>
+              <TreeCard tree={tree} />
+            </div>
+          ))}
+        </AnimatePresence>
       </motion.div>
     </section>
   )

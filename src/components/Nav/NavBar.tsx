@@ -1,79 +1,82 @@
-import { useState, useEffect } from "react";
-import { MdMenu, MdEmail, MdClose } from "react-icons/md";
-import { SiLinkedin, SiGithub } from "react-icons/si";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect } from 'react'
+import { MdMenu, MdEmail, MdClose } from 'react-icons/md'
+import { SiLinkedin, SiGithub } from 'react-icons/si'
+import { motion, AnimatePresence } from 'motion/react'
 
-const NAV = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#resume", label: "Resume" },
-] as const;
+type NavItem = { href: string; label: string; download?: boolean }
+
+const NAV: readonly NavItem[] = [
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
+  // Point to the PDF in /public and mark as download
+  { href: '/JHyun Lee Resume.pdf', label: 'Resume', download: true },
+] as const
 
 const SOCIAL = [
-  { href: "https://github.com/jealee44", label: "GitHub", Icon: SiGithub },
-  {
-    href: "https://linkedin.com/in/jealee44",
-    label: "LinkedIn",
-    Icon: SiLinkedin,
-  },
-  { href: "mailto:jealee44@gmail.com", label: "Email", Icon: MdEmail },
-] as const;
+  { href: 'https://github.com/jealee44', label: 'GitHub', Icon: SiGithub },
+  { href: 'https://linkedin.com/in/jealee44', label: 'LinkedIn', Icon: SiLinkedin },
+  { href: 'mailto:jealee44@gmail.com', label: 'Email', Icon: MdEmail },
+] as const
 
 export default function NavBar() {
-  const [open, setOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleScroll = () => setHasScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToSection = (href: string) => {
-    setOpen(false);
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
+    setOpen(false)
+    const el = document.querySelector(href)
+    el?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = open ? 'hidden' : 'unset'
     return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [open]);
+      document.body.style.overflow = 'unset'
+    }
+  }, [open])
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 
-                ${hasScrolled ? "bg-[var(--color-dark)]/60 backdrop-blur-md" : "bg-[var(--color-dark)]/40 backdrop-blur-sm"} 
-                border-b border-[var(--color-cyan-light)]/20`}
+        className={`fixed top-0 right-0 left-0 z-40 transition-all duration-300 ${hasScrolled ? 'bg-[var(--color-dark)]/60 backdrop-blur-md' : 'bg-[var(--color-dark)]/40 backdrop-blur-sm'} border-b border-[var(--color-cyan-light)]/20`}
       >
-        <nav className="container-90 h-20 flex justify-between items-center">
+        <nav className="container-90 flex h-20 items-center justify-between">
           <a
             href="#about"
-            className="font-family-heading text-cyan-light hover:[text-shadow:0_0_14px_var(--color-cyan-light)] text-base md:text-xl tracking-wide"
+            className="font-family-heading text-cyan-light text-base tracking-wide hover:[text-shadow:0_0_14px_var(--color-cyan-light)] md:text-xl"
           >
             JEA LEE
           </a>
 
-          <div className="hidden md:flex items-center gap-6">
-            <ul className="flex items-center gap-6 font-family-heading text-cyan-light/85 text-base md:text-xl">
+          {/* Desktop */}
+          <div className="hidden items-center gap-6 md:flex">
+            <ul className="font-family-heading text-cyan-light/85 flex items-center gap-6 text-base md:text-xl">
               {NAV.map((n) => (
-                <li key={n.href}>
-                  <a
-                    href={n.href}
-                    className="relative inline-block underline-offset-8 hover:underline hover:text-cyan-light hover:[text-shadow:0_0_14px_var(--color-cyan-light)]"
-                  >
-                    {n.label}
-                  </a>
+                <li key={n.label}>
+                  {n.download ? (
+                    // Download link for Resume
+                    <a
+                      href={n.href}
+                      download
+                      className="hover:text-cyan-light relative inline-block underline-offset-8 hover:underline hover:[text-shadow:0_0_14px_var(--color-cyan-light)]"
+                    >
+                      {n.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={n.href}
+                      className="hover:text-cyan-light relative inline-block underline-offset-8 hover:underline hover:[text-shadow:0_0_14px_var(--color-cyan-light)]"
+                    >
+                      {n.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -84,7 +87,7 @@ export default function NavBar() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="p-1 text-cyan-light/70 hover:text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] focus:outline-none focus:ring-2 focus:ring-[color:var(--color-cyan-light)]/60 rounded "
+                  className="text-cyan-light/70 hover:text-cyan-light rounded p-1 hover:[text-shadow:0_0_10px_var(--color-cyan-light)] focus:ring-2 focus:ring-[color:var(--color-cyan-light)]/60 focus:outline-none"
                 >
                   <Icon size={22} />
                 </a>
@@ -92,17 +95,19 @@ export default function NavBar() {
             </div>
           </div>
 
+          {/* Mobile trigger */}
           <button
             type="button"
             aria-label="Open Menu"
             onClick={() => setOpen(true)}
-            className="md:hidden p-2 text-cyan-light/85 hover:text-cyan-light"
+            className="text-cyan-light/85 hover:text-cyan-light p-2 md:hidden"
           >
             <MdMenu size={28} />
           </button>
         </nav>
       </header>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -112,7 +117,7 @@ export default function NavBar() {
             className="fixed inset-0 z-50 md:hidden"
           >
             <div
-              className="absolute inset-0 bg-dark/95 backdrop-blur-md "
+              className="bg-dark/95 absolute inset-0 backdrop-blur-md"
               onClick={() => setOpen(false)}
             />
 
@@ -120,33 +125,42 @@ export default function NavBar() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                            w-[90%] max-w-sm
-                            [background:var(--panel-gradient)]
-                            [box-shadow:var(--panel-shadow)]
-                            border-2 border-[var(--color-cyan-light)]/50 p-8"
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="absolute top-1/2 left-1/2 w-[90%] max-w-sm -translate-x-1/2 -translate-y-1/2 border-2 border-[var(--color-cyan-light)]/50 p-8 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)]"
             >
               <button
                 onClick={() => setOpen(false)}
-                className="absolute top-4 right-4 text-cyan-light/50 hover:[text-shadow:0_0_10px_var(--color-cyan-light)] hover:text-cyan-light transition-all duration-200 hover:scale-110"
+                className="text-cyan-light/50 hover:text-cyan-light absolute top-4 right-4 transition-all duration-200 hover:scale-110 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
                 aria-label="Close Menu"
               >
                 <MdClose size={24} />
               </button>
 
-              <nav className="flex flex-col items-center gap-6 mt-8">
-                {NAV.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-2xl font-family-heading text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] transition-all tracking-wider hover:scale-110"
-                  >
-                    {item.label}
-                  </button>
-                ))}
+              <nav className="mt-8 flex flex-col items-center gap-6">
+                {NAV.map((n) =>
+                  n.download ? (
+                    // Mobile: a tag with download, close the sheet on click
+                    <a
+                      key={n.label}
+                      href={n.href}
+                      download
+                      onClick={() => setOpen(false)}
+                      className="font-family-heading text-cyan-light text-2xl tracking-wider transition-all hover:scale-110 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+                    >
+                      {n.label}
+                    </a>
+                  ) : (
+                    <button
+                      key={n.label}
+                      onClick={() => scrollToSection(n.href)}
+                      className="font-family-heading text-cyan-light text-2xl tracking-wider transition-all hover:scale-110 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+                    >
+                      {n.label}
+                    </button>
+                  ),
+                )}
 
-                <div className="flex items-center gap-6 mt-6 pt-6 border-t border-[var(--color-cyan-light)]/30">
+                <div className="mt-6 flex items-center gap-6 border-t border-[var(--color-cyan-light)]/30 pt-6">
                   {SOCIAL.map(({ href, label, Icon }) => (
                     <a
                       key={label}
@@ -154,7 +168,7 @@ export default function NavBar() {
                       aria-label={label}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cyan-light/70 hover:text-cyan-light hover:[text-shadow:0_0_10px_var(--color-cyan-light)] transition-all hover:scale-110"
+                      className="text-cyan-light/70 hover:text-cyan-light transition-all hover:scale-110 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
                     >
                       <Icon size={28} />
                     </a>
@@ -166,5 +180,5 @@ export default function NavBar() {
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }

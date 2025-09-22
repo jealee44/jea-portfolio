@@ -1,3 +1,4 @@
+// src/components/Projects/QuestLog.tsx
 import { useMemo, useState, useEffect, useCallback } from 'react'
 import { QUESTS } from '../../data/quests'
 import { MdOpenInNew, MdCode, MdChevronLeft, MdChevronRight } from 'react-icons/md'
@@ -25,17 +26,17 @@ function ConfirmModal({
         >
           <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
           <motion.div
-            className="border-cyan-light/50 absolute top-1/2 left-1/2 w-[90%] max-w-sm -translate-x-1/2 -translate-y-1/2 border-2 p-6 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)]"
-            initial={{ scale: 0.9, opacity: 0 }}
+            className="absolute top-1/2 left-1/2 w-[92%] max-w-lg -translate-x-1/2 -translate-y-1/2 border-2 border-red-500/50 p-8 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)]"
+            initial={{ scale: 0.92, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
+            exit={{ scale: 0.92, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 22 }}
             role="dialog"
             aria-modal="true"
           >
             <div className="mb-4 text-center">
-              <div className="border-cyan-light/30 bg-dark/40 mb-3 inline-block border px-4 py-1">
-                <span className="font-family-heading text-cyan-light text-2xl tracking-wider [text-shadow:0_0_10px_var(--color-cyan-light)]">
+              <div className="mb-3 inline-block border border-red-500/50 bg-black/40 px-5 py-1.5">
+                <span className="font-family-heading text-2xl tracking-wider text-red-400 [text-shadow:0_0_14px_#ef4444]">
                   Warning
                 </span>
               </div>
@@ -95,16 +96,15 @@ export default function QuestLog() {
   return (
     <section id="projects" className="container-quest scroll-mt-24 py-24">
       <div className="mb-10 text-center">
-        <div className="border-cyan-light/30 bg-dark/40 inline-block border px-8 py-2">
+        <div className="border-gold-light/50 bg-dark/40 inline-block border px-8 py-2">
           <h2 className="font-family-heading text-cyan-light text-4xl tracking-wider [text-shadow:0_0_10px_var(--color-cyan-light)] sm:text-5xl">
             Quest Log
           </h2>
         </div>
         <p className="font-family-body text-cyan-light/80 mx-auto mt-4 max-w-[70ch] text-[length:var(--fs-body)]">
-          A chronicle of quests completed and in-progress by{' '}
-          <span className="text-cyan-light font-semibold">Jea Lee</span>—each one a dungeon clear:
-          tools forged, bugs vanquished, and users rescued from needless friction. Browse entries,
-          check the loot (tech stack), and venture to the live realms if you accept the risk.
+          A showcase of shipped projects and in-progress ideas presented like a progression log.
+          Each entry notes the challenge, the answer, and the tools I leveled to get it done.
+          Explore the stack, then jump to the live realm if you accept the risk.
         </p>
       </div>
 
@@ -113,7 +113,7 @@ export default function QuestLog() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
-        className={`border-cyan-light/40 max-h-[650px] border-2 p-4 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] md:h-[480px] md:p-6 lg:h-[540px] lg:p-8 ${
+        className={`border-cyan-light/40 max-h-[700px] border-2 p-4 [box-shadow:var(--panel-shadow)] [background:var(--panel-gradient)] md:h-[520px] md:p-6 lg:h-[580px] lg:p-8 ${
           isPlanned ? 'opacity-85 grayscale-[35%]' : ''
         }`}
         aria-labelledby={`quest-${q.id}-title`}
@@ -144,20 +144,26 @@ export default function QuestLog() {
               {q.title}
             </h3>
 
-            <div className="mb-3 max-h-[150px] flex-1 overflow-y-auto md:mb-4 md:max-h-none">
+            <div className="glow-scroll mb-3 max-h-[180px] flex-1 overflow-y-auto md:mb-4 md:max-h-none">
               <div className="font-family-body text-cyan-light/85 text-sm leading-relaxed md:text-sm lg:text-base">
-                <p>{q.blurb}</p>
+                <p className="mb-2">{q.blurb}</p>
+                {!isPlanned && q.problem && q.solution && (
+                  <div className="space-y-2">
+                    <p className="text-cyan-light/85">
+                      <span className="text-gold-light font-semibold">Problem:</span> {q.problem}
+                    </p>
+                    <span className="text-green/90 font-semibold">Solution:</span> {q.solution}
+                  </div>
+                )}
                 {isPlanned && q.planned && (
-                  <div className="text-cyan-light/80 mt-2 space-y-1 md:mt-3 md:space-y-2">
-                    <p>
-                      <span className="text-cyan-light font-semibold">Problem:</span>{' '}
+                  <div className="mt-2 space-y-2 md:mt-3">
+                    <p className="text-cyan-light/85">
+                      <span className="text-gold-light font-semibold">Problem:</span>{' '}
                       {q.planned.problem}
                     </p>
-                    <p>
-                      <span className="text-cyan-light font-semibold">Solution:</span>{' '}
-                      {q.planned.solution}
-                    </p>
-                    <p className="pt-1">
+                    <span className="text-green/90 font-semibold">Solution:</span>{' '}
+                    {q.planned.solution}
+                    <p className="text-cyan-light/85 pt-1">
                       <span className="text-cyan-light font-semibold">MVP:</span>{' '}
                       {q.planned.mvp.join(' · ')}
                     </p>
@@ -171,7 +177,7 @@ export default function QuestLog() {
                 {q.tech.map((t) => (
                   <li
                     key={t}
-                    className="font-family-game border-cyan-light/30 bg-dark/40 text-cyan-light/90 border px-1.5 py-0.5 text-[10px] tracking-wide md:px-2.5 md:py-1 md:text-xs"
+                    className="font-family-game border-green/30 bg-dark/40 text-green border px-1.5 py-0.5 text-[10px] tracking-wide md:px-2.5 md:py-1 md:text-xs"
                   >
                     {t}
                   </li>
@@ -220,14 +226,14 @@ export default function QuestLog() {
         <button
           aria-label="Previous quest"
           onClick={() => goto(-1)}
-          className="border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light rounded border p-2 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+          className="border-gold-light/30 text-gold-light/80 hover:text-gold-light rounded border p-2 hover:[text-shadow:0_0_10px_var(--color-gold-light)]"
         >
           <MdChevronLeft size={26} />
         </button>
         <button
           aria-label="Next quest"
           onClick={() => goto(1)}
-          className="border-cyan-light/30 text-cyan-light/80 hover:text-cyan-light rounded border p-2 hover:[text-shadow:0_0_10px_var(--color-cyan-light)]"
+          className="border-gold-light/30 text-gold-light/80 hover:text-gold-light rounded border p-2 hover:[text-shadow:0_0_10px_var(--color-gold-light)]"
         >
           <MdChevronRight size={26} />
         </button>

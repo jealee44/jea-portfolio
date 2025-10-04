@@ -9,7 +9,7 @@ const NAV: readonly NavItem[] = [
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
-  { href: '/JHyunLee_Resume.pdf', label: 'Resume', download: true },
+  { href: '/JeaLee_Resume.pdf', label: 'Resume', download: true },
 ] as const
 
 const SOCIAL = [

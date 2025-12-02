@@ -13,8 +13,8 @@ const NAV: readonly NavItem[] = [
 ] as const
 
 const SOCIAL = [
-  { href: 'https://github.com/jealee44', label: 'GitHub', Icon: SiGithub },
-  { href: 'https://linkedin.com/in/jealee44', label: 'LinkedIn', Icon: SiLinkedin },
+  { href: 'https://github.com/jaylee44', label: 'GitHub', Icon: SiGithub },
+  { href: 'https://linkedin.com/in/jaylee44', label: 'LinkedIn', Icon: SiLinkedin },
   { href: 'mailto:jealee44@gmail.com', label: 'Email', Icon: MdEmail },
 ] as const
 

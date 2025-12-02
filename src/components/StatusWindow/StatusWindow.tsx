@@ -13,7 +13,7 @@ const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
   }
 
   const stats: Stats = {
-    name: 'JEA LEE',
+    name: 'JAY LEE',
     level: 2,
     class: 'Full-Stack Developer',
     energy: { current: 85, max: 100 },
@@ -81,7 +81,7 @@ const StatusWindow = ({ maxHeight }: StatusWindowProps) => {
             </h2>
             <p className="font-family-body text-cyan-light/70 text-(length:--fs-body) leading-normal">
               Welcome, Adventurer! Allow me to introduce{' '}
-              <strong className="text-green [text-shadow:0_0_12px_var(--color-green)]">Jea</strong>,
+              <strong className="text-green [text-shadow:0_0_12px_var(--color-green)]">Jay</strong>,
               a<strong className="text-cyan-light"> Full-stack Developer</strong> who specializes in{' '}
               <strong className="text-gold-light/90"> React</strong>,{' '}
               <strong className="text-gold-light/90">TypeScript</strong>,{' '}

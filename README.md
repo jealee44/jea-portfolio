@@ -29,5 +29,5 @@ It showcases my projects, skills, and background in a unique game-inspired forma
 ## 📬 Contact
 
 - [Portfolio Site](https://jea-portfolio.vercel.app)
-- [GitHub](https://github.com/jealee44)
-- [LinkedIn](https://linkedin.com/in/jealee44)
+- [GitHub](https://github.com/jaylee44)
+- [LinkedIn](https://linkedin.com/in/jaylee44)

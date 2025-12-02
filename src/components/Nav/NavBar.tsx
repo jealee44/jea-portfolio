@@ -51,7 +51,7 @@ export default function NavBar() {
             href="#about"
             className="font-family-heading text-cyan-light text-base tracking-wide hover:[text-shadow:0_0_14px_var(--color-cyan-light)] md:text-xl"
           >
-            JEA LEE
+            JAY LEE
           </a>
           <div className="hidden items-center gap-6 md:flex">
             <ul className="font-family-heading text-cyan-light/85 flex items-center gap-6 text-base md:text-xl">

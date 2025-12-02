@@ -21,7 +21,7 @@ export default function Avatar({ className = '' }: AvatarProps) {
       />
       <img
         src="/images/avatar.webp"
-        alt="Avatar of Jea Lee"
+        alt="Avatar of Jay Lee"
         loading="eager"
         fetchPriority="high"
         decoding="async"
